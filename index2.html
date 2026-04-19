@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <title>trang chính</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <style>
         body {
             background-color: #f8f9fa;
@@ -70,23 +69,28 @@
             background-color: #eee;
             border-radius: 5px;
         }
-
-     
-        
+        .login-container {                  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
     </style>
 </head>
 <body>
     <div align="center">
         <h1>SÁCH TỐT GIÁ RẺ 3 ANH TÀI</h1>
+        <h3 align="center">Chào mừng bạn đến với tiệm sách!</h3>
     </div>
-
     <div id="home-page" class="content-box">
         <div class="header-container">
             <button onclick="showPage('home-page')">
                 <i class="fa-solid fa-house-chimney"></i>
             </button>
-
             <div>
+                <button onclick="showPage('account-page')">
+                    <i class="fa-solid fa-user"></i>
+                </button>
                 <button onclick="showPage('search-page')">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -95,9 +99,29 @@
                 </button>
             </div>
         </div>
-        <h3 align="center">Chào mừng bạn đến với tiệm sách!</h3>
     </div>
-
+    <div id="account-page" class="content-box hidden login">
+        <div class="login-container">
+            <form>
+                <fieldset>
+                    <h2 aligin="center" style="margin-top: 0; color: #333;">Đăng nhập/Đăng ký</h2>
+                    <label>Email</label><br />
+                    <input type="email" id="email" name="email_khach" placeholder="example@st.tvu.edu.vn" required /><br />
+                    <label>Mật khẩu</label><br />
+                    <input type="password" id="matkhau" required /><br />
+                    <br />
+                    <label><i>bạn chưa có tài khoản!</i></label><br />
+                    <a href="test.html" target="_blank">tạo tài khoản?</a><br /><br />
+                    <div align="center">
+                        <button type="submit" onclick="saveData(event)">đăng nhập  </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="back-button" onclick="showPage('home-page')">
+            <i class="fa-solid fa-arrow-left"></i>
+        </div>
+    </div>
     <div id="search-page" class="content-box hidden">
         <div class="search-full-width">
             <input type="text" id="searchInput" placeholder="Nhập tên sách em guộc ơi..." style="padding: 10px; width: 80%;" />
@@ -108,16 +132,14 @@
         </div>
     </div>
     <div id="cart-page" class="content-box hidden">
-        <div align="center"  style="margin-top: 50px;">
-                <i class="fa-solid fa-magnifying-glass"></i>
+        <div align="center" style="margin-top: 50px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
             <p>Lựa cuốn sách mà em guộc thích nhé <i class="fa-solid fa-face-smile-beam"></i></p>
-            </div>
-
+        </div>
         <div class="back-button" onclick="showPage('home-page')">
             <i class="fa-solid fa-arrow-left"></i>
         </div>
-        </div>
-
+    </div>
     <script>
         function showPage(pageId) {
             let allPages = document.querySelectorAll('.content-box');
@@ -135,7 +157,25 @@
                 alert("Chưa nhập gì mà em guộc!");
             }
         }
-    </script>
+         function saveData(event) {
+     if (!event.target.form.checkValidity()) {
+         return;
+     }
+     event.preventDefault();
+     let emailDangnhap = document.getElementById("email").value;
+     let matkhauDangnhap = document.getElementById("matkhau").value;
 
+     let emailDaluu = localStorage.getItem("email");
+     let matkhauDaluu = localStorage.getItem("matkhau");
+     if (emailDangnhap === emailDaluu && matkhauDangnhap === matkhauDaluu) {
+         alert("Đăng nhập thành công!");
+         window.location.href = "trangchinh.html";
+
+     }
+     else {
+         alert("Email hoặc mật khẩu không chính xác.Vui lòng nhập lại!");
+     }
+ }
+    </script>
 </body>
 </html>
