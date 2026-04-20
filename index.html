@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,6 +23,18 @@
             margin: 0 auto 20px auto;
             border-radius:10px;
             justify-content: space-between;
+        }
+        .table-container {
+            background-color: white;
+            border: 1px solid #ccc;
+            max-width: 800px;
+            padding: 10px 20px;
+            margin: 0 auto 20px 0;
+            border-radius: 10px;
+        }
+        .table-container th{
+            padding-right: 15px;
+            text-align: left;
         }
         .search-full-width {
             background: white;
@@ -92,50 +104,148 @@
             border-color: #00ced1;
             outline: none;
         }
+        .reg-label{
+            font-weight:bold;
+            display:block;
+            margin-top: 10px;
+            color:#555;
+        }
+        input[type="date"]{
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+        .gender-container{
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            margin: 5px 0 15px 0;
+        }
+        .gender-item {
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .gender-item input {
+            margin-right: 8px;
+            width: auto;
+        }
+        .gender-container input{
+            margin-right:5px;
+            cursor: pointer;
+        }
+        .gender-container label{
+            margin-right: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div align="center" id="home-page" class="content-box">
-        <div align="right">
-            <button onclick="showPage('account-page')">
-                <i class="fa-solid fa-user"></i>
-            </button>
-        </div>
-        <h1>SÁCH TỐT GIÁ RẺ 3 ANH TÀI</h1>
-        <h3 align="center">Chào mừng bạn đến với tiệm sách!</h3>
-        <div>
-            <div class="header-container">
-                <i class="fa-solid fa-house-chimney"></i>
-                <div style="display:flex;">
+    <header>
+        <div align="center" id="home-page" class="content-box">
+            <div align="right">
+                <button onclick="showPage('account-page')">
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </div>
+            <h1><i class="fa-solid fa-book"></i>3AT Book</h1>
+            <h3 align="center">Chào mừng bạn đến với tiệm sách!</h3>
+            <div>
+                <div class="header-container">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <div style="display:flex;">
 
-                    <button onclick="showPage('search-page')">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <button onclick="showPage('cart-page')">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
+                        <button onclick="showPage('search-page')">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <button onclick="showPage('cart-page')">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <hr />
         </div>
-    </div>
+        <div class=".table-container">
+            <table style="width:auto;">
+                <tr>
+                    <th><button onclick="showPage('home-page')">Trang chủ</button></th>
+                    <th><button a href="#sachmoi">Sách mới</button></th>
+                    <th><button a href="#theloai">Thể loại</button></th>
+                    <th><button>Bán chạy</button></th>                   
+                    <th><button>Khuyến mãi</button></th>
+                    <th><button>Tin tức</button></th>
+                    <th><button>Liên hệ</button></th>
+                </tr>
+            </table>
+        </div>
+    </header>
+    <h3>sách mới được thêm vào gần đây</h3>
+    <div a href="#sachmoi"></div>
+
     <div id="account-page" class="content-box hidden login">
         <div class="login-container">
-            <form>
-                <h2 align="center" style="margin-top: 0; color: #333;">Đăng nhập/Đăng ký</h2>
-                <fieldset style="background: white; border: none; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">                  
-                    <label style="font-weight: bold;">Email</label><br />
-                    <input type="email" id="email" class="input-login" placeholder="example@email.com" required /><br />
-                    <label style="font-weight: bold;">Mật khẩu</label><br />
-                    <input type="password" id="matkhau" class="input-login" required /><br />
-                    <br />
-                    <label><i>bạn chưa có tài khoản!</i></label><br />
-                    <a href="test.html" target="_blank" style="color: #008b8b; text-decoration: none; font-size: 14px; ">tạo tài khoản?</a>
-                    <br />
-                    <br />
-                    <div align="center">
-                        <button type="submit" class="btn-nav" style="width: 100%; background-color: #008b8b; color: white; padding: 10px; border-radius: 5px; " onclick="saveData(event)">ĐĂNG NHẬP  </button>
-                    </div>
-                </fieldset>
+            <div id="login-section">
+                <form>
+                    <h2 align="center" style="margin-top: 0; color: #333;">Đăng nhập/Đăng ký</h2>
+                    <fieldset style="background: white; border: none; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                        <label style="font-weight: bold;">Email</label><br />
+                        <input type="email" id="login-email" class="input-login" placeholder="example@email.com" required /><br />
+                        <label style="font-weight: bold;">Mật khẩu</label><br />
+                        <input type="password" id="login-matkhau" class="input-login" required /><br />
+                        <br />
+                        <label><i>bạn chưa có tài khoản!</i></label><br />
+                        <a href="javascript:void(0)" onclick="toggleAuth('register')" style="color: #008b8b; text-decoration: none; font-size: 14px; ">tạo tài khoản?</a>
+                        <br />
+                        <br />
+                        <div align="center">
+                            <button type="submit" class="btn-nav" style="width: 100%; background-color: #008b8b; color: white; padding: 10px; border-radius: 5px; " onclick="saveData(event)">ĐĂNG NHẬP  </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <form id="register-section" class="hidden">
+                <div align="center">
+                    <h2>Vui Lòng Nhập Thông Tin </h2>
+                </div>
+                <div class="login login-container">
+                    <fieldset style="background: white; border: none; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                        <div align="left">
+                            <label class="reg-label">Họ và Tên:</label><br />
+                            <input type="text" id="reg-hoten" class="input-login" required /><br />
+
+                            <label class="reg-label">Mã số sinh viên</label><br />
+                            <input type="text" id="reg-mssv" class="input-login" required /><br />
+
+                            <label class="reg-label">Giới Tính </label><br />
+                            <div class="gender-container">
+                                <div class="gender-item">
+                                    <input type="radio" name="gioitinh" value="Nam" checked /><label for="nam">Nam</label><br />
+                                    <input type="radio" name="gioitinh" value="Nu" /><label for="nu">Nữ</label><br />
+                                </div>
+                            </div>
+                            <label class="reg-label">Ngày Sinh</label><br />
+                            <input type="date" id="reg-ngaysinh" required /><br />
+
+                            <label class="reg-label">Email</label><br />
+                            <input type="email" id="reg-email" name="email_khach" class="input-login" placeholder="example@email.com" required /><br />
+
+                            <label class="reg-label">Mật khẩu</label><br />
+                            <input type="password" id="reg-matkhau" class="input-login" required /><br />
+                            <label class="reg-label">Vui lòng nhập lại mật khẩu</label><br />
+                            <input type="password" id="reg-matkhau1" class="input-login" required /><br />
+
+                            <br />
+                            <div align="center">
+                                <button type="submit" class="btn-nav" style="width: 100%; background-color: #008b8b; color: white; padding: 12px; border-radius: 8px;" onclick="Register(event)">Lưu thông tin  </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </form>
         </div>
         <div class="back-button" onclick="showPage('home-page')">
@@ -162,24 +272,10 @@
             <i class="fa-solid fa-arrow-left"></i>
         </div>
     </div>
-    <table>
-        <tr>
-            <th><button>Trang chủ</button></th>
-            <th><button>Thể loại</button></th>
-            <th><button>Bán chạy</button></th>
-            <th><button>Sách mới</button></th>
-            <th><button>Khuyến mãi</button></th>
-            <th><button>Tin tức</button></th>
-            <th><button>Liên hệ</button></th>
-        </tr>
-    </table>
     <script>
         function showPage(pageId) {
             let allPages = document.querySelectorAll('.content-box');
-            allPages.forEach(page => {
-                page.classList.add('hidden');
-            });
-
+            allPages.forEach(page => { page.classList.add('hidden'); });
             document.getElementById(pageId).classList.remove('hidden');
         }
         function performSearch() {
@@ -190,25 +286,63 @@
                 alert("Chưa nhập gì mà em guộc!");
             }
         }
-         function saveData(event) {
-     if (!event.target.form.checkValidity()) {
-         return;
-     }
-     event.preventDefault();
-     let emailDangnhap = document.getElementById("email").value;
-     let matkhauDangnhap = document.getElementById("matkhau").value;
+        // chuyển đổi trang đăng nhập và đăng ký
+        function toggleAuth(type) {
+            if (type === 'register') {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('register-section').classList.remove('hidden');
+            } else {
+                document.getElementById('register-section').classList.add('hidden');
+                document.getElementById('login-section').classList.remove('hidden');
 
-     let emailDaluu = localStorage.getItem("email");
-     let matkhauDaluu = localStorage.getItem("matkhau");
-     if (emailDangnhap === emailDaluu && matkhauDangnhap === matkhauDaluu) {
-         alert("Đăng nhập thành công!");
-         showPage('home-page');
+            }
+        }
+        //đăng nhập
+        function Login(event) {
+            if (!event.target.form.checkValidity()) {
+                return;
+            }
+            event.preventDefault();
+            let emailDangnhap = document.getElementById("login-email").value;
+            let matkhauDangnhap = document.getElementById("login-matkhau").value;
 
-     }
-     else {
-         alert("Email hoặc mật khẩu không chính xác.Vui lòng nhập lại!");
-     }
- }
+            let emailDaluu = localStorage.getItem("email");
+            let matkhauDaluu = localStorage.getItem("matkhau");
+            if (emailDangnhap === emailDaluu && matkhauDangnhap === matkhauDaluu) {
+                alert("Đăng nhập thành công!");
+                showPage('home-page');
+
+            }
+            else {
+                alert("Email hoặc mật khẩu không chính xác.Vui lòng nhập lại!");
+            }
+        }
+        //đăng ký
+        function Registr(event) {
+            const form = document.getElementById('registerForm');
+            if (!form.checkValidity()) {
+                return;
+            }
+            event.preventDefault();
+            let name = document.getElementById("reg-hoten").value;
+            let studentID = document.getElementById("reg-mssv").value;
+            let ngaysinh = document.getElementById("reg-ngaysinh").value;
+            let email = document.getElementById("reg-email").value;
+            let matkhau = document.getElementById("reg-matkhau").value;
+            let matkhau1 = document.getElementById("reg-matkhau1").value;
+            if (matkhau !== matkhau1) {
+                alert("Mật khẩu nhập lại không khớp, vui lòng nhập lại!");
+                return;
+            }
+            localStorage.setItem("hoten", name);
+            localStorage.setItem("mssv", studentID);
+            localStorage.setItem("ngaysinh", ngaysinh);
+            localStorage.setItem("email", email);
+            localStorage.setItem("matkhau", matkhau);
+            localStorage.setItem("matkhau1", matkhau1);
+            alert("Đã đăng ký thành công tài khoản: " + name);
+            toggleAuth('login');
+        }
     </script>
 </body>
 </html>
