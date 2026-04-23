@@ -160,6 +160,33 @@
             margin-right: 20px;
             cursor: pointer;
         }
+        .book-card {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+            .book-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .book-card img {
+                width: 140px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+        .book-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -189,7 +216,7 @@
                 </div>
             </div>
             <hr />
-            <div class=".table-container">
+            <div>
                 <table style="width:auto;">
                     <tr>
                         <th><button onclick="showPage('home-page')">Trang chủ</button></th>
@@ -205,10 +232,33 @@
         </header>
         <div>
             <h3>sách mới được thêm vào gần đây</h3>
-         <div a href="#sachmoi"></div>
+            <a href="#sachmoi"></a>
+            <table class="table-container">
+                <tr>
+                    <th>
+                        <div class="book-card">
+                            <img src="https://marketplace.canva.com/EAD5DLrZ1DE/1/0/1024w/canva-xanh-m%C3%B2ng-k%C3%A9t-v%C3%A0-h%E1%BB%93ng-b%C3%A1nh-donut-th%E1%BB%A9c-%C4%83n-nh%E1%BA%ADt-k%C3%BD-s%C3%A1ch-b%C3%ACa-Zlr77mT-27w.jpg" />
+                            <div class="book-title">Nhập ký thức ăn</div>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="book-card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvs-dmZnbL-2wgx3MMJYeISinumkrLC2JAVg&s" />
+                            <div class="book-title">Harry Potter và Bảo Bối Tử Thần</div>
+                        </div>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
         </div>
     </div>
-    
+
     <div id="account-page" class="content-box hidden login">
         <div class="login-container">
             <div id="login-section">
@@ -216,16 +266,16 @@
                     <h2 align="center" style="margin-top: 0; color: #333;">Đăng nhập/Đăng ký</h2>
                     <fieldset style="background: white; border: none; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
                         <label style="font-weight: bold;">Email</label><br />
-                        <input type="email" id="login-email" class="input-login" placeholder="example@email.com" required /><br />
+                        <input type="email" id="user-email" class="input-login" placeholder="example@email.com" required /><br />
                         <label style="font-weight: bold;">Mật khẩu</label><br />
-                        <input type="password" id="login-matkhau" class="input-login" required /><br />
+                        <input type="password" id="user-matkhau" class="input-login" required /><br />
                         <br />
                         <label><i>bạn chưa có tài khoản!</i></label><br />
                         <a href="javascript:void(0)" onclick="toggleAuth('register')" style="color: #008b8b; text-decoration: none; font-size: 14px; ">tạo tài khoản?</a>
                         <br />
                         <br />
                         <div align="center">
-                            <button type="submit" class="btn-nav" style="width: 100%; background-color: #008b8b; color: white; padding: 10px; border-radius: 5px; " onclick="saveData(event)">ĐĂNG NHẬP  </button>
+                            <button type="submit" class="btn-nav" style="width: 100%; background-color: #008b8b; color: white; padding: 10px; border-radius: 5px; " onclick="Login(event)">ĐĂNG NHẬP  </button>
                         </div>
                     </fieldset>
                 </form>
@@ -238,10 +288,10 @@
                     <fieldset style="background: white; border: none; border-radius: 15px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
                         <div align="left">
                             <label class="reg-label">Họ và Tên:</label><br />
-                            <input type="text" id="reg-hoten" class="input-login" required /><br />
+                            <input type="text" id="hoten" class="input-login" required /><br />
 
                             <label class="reg-label">Mã số sinh viên</label><br />
-                            <input type="text" id="reg-mssv" class="input-login" required /><br />
+                            <input type="text" id="mssv" class="input-login" required /><br />
 
                             <label class="reg-label">Giới Tính </label><br />
                             <div class="gender-container">
@@ -251,15 +301,15 @@
                                 </div>
                             </div>
                             <label class="reg-label">Ngày Sinh</label><br />
-                            <input type="date" id="reg-ngaysinh" required /><br />
+                            <input type="date" id="ngaysinh" required /><br />
 
                             <label class="reg-label">Email</label><br />
-                            <input type="email" id="reg-email" name="email_khach" class="input-login" placeholder="example@email.com" required /><br />
+                            <input type="email" id="email" name="email_khach" class="input-login" placeholder="example@email.com" required /><br />
 
                             <label class="reg-label">Mật khẩu</label><br />
-                            <input type="password" id="reg-matkhau" class="input-login" required /><br />
+                            <input type="password" id="matkhau" class="input-login" required /><br />
                             <label class="reg-label">Vui lòng nhập lại mật khẩu</label><br />
-                            <input type="password" id="reg-matkhau1" class="input-login" required /><br />
+                            <input type="password" id="matkhau1" class="input-login" required /><br />
 
                             <br />
                             <div align="center">
@@ -352,9 +402,10 @@
                 return;
             }
             event.preventDefault();
-            let emailDangnhap = document.getElementById("login-email").value;
-            let matkhauDangnhap = document.getElementById("login-matkhau").value;
-
+            // Lấy giá trị user nhập vào ô input
+            let emailDangnhap = document.getElementById("user-email").value;
+            let matkhauDangnhap = document.getElementById("user-matkhau").value;
+            // Lấy giá trị ĐÃ LƯU lúc đăng ký (Key phải khớp với hàm Registr bên dưới)
             let emailDaluu = localStorage.getItem("email");
             let matkhauDaluu = localStorage.getItem("matkhau");
             if (emailDangnhap === emailDaluu && matkhauDangnhap === matkhauDaluu) {
@@ -369,7 +420,7 @@
                 // 2. Ẩn form đăng nhập và hiện hồ sơ
                 document.getElementById("login-section").classList.add("hidden");
                 document.getElementById("profile-section").classList.remove("hidden");
-                showPage('home-page');
+                showPage('account-page');
 
             }
             else {
@@ -377,18 +428,18 @@
             }
         }
         //đăng ký
-        function Registr(event) {
-            const form = document.getElementById('registerForm');
+        function Register(event) {
+            const form = document.getElementById('register-section');
             if (!form.checkValidity()) {
                 return;
             }
             event.preventDefault();
-            let name = document.getElementById("reg-hoten").value;
-            let studentID = document.getElementById("reg-mssv").value;
-            let ngaysinh = document.getElementById("reg-ngaysinh").value;
-            let email = document.getElementById("reg-email").value;
-            let matkhau = document.getElementById("reg-matkhau").value;
-            let matkhau1 = document.getElementById("reg-matkhau1").value;
+            let name = document.getElementById("hoten").value;
+            let studentID = document.getElementById("mssv").value;
+            let ngaysinh = document.getElementById("ngaysinh").value;
+            let email = document.getElementById("email").value;
+            let matkhau = document.getElementById("matkhau").value;
+            let matkhau1 = document.getElementById("matkhau1").value;
             if (matkhau !== matkhau1) {
                 alert("Mật khẩu nhập lại không khớp, vui lòng nhập lại!");
                 return;
